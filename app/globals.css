@@ -1,22 +1,22 @@
 @import "tailwindcss";
 
-:root {
-  --blue: #0a4fff;
-  --blue-deep: #04143f;
-  --blue-mid: #1a3a8f;
-  --blue-soft: #eef3ff;
-  --blue-line: #c9d9ff;
-  --ink: #0b1220;
-  --grey: #5b6b86;
-  --line: #e4eaf4;
-  --paper: #f7f9fc;
-  --green: #12794a;
-  --green-soft: #e7f7ee;
-  --amber: #8a5a00;
-  --amber-soft: #fff6e5;
-  --amber-line: #f2dcae;
-  --red: #b4232a;
-  --white: #ffffff;
+@theme {
+  --color-blue: #0a4fff;
+  --color-blue-deep: #04143f;
+  --color-blue-mid: #1a3a8f;
+  --color-blue-soft: #eef3ff;
+  --color-blue-line: #c9d9ff;
+  --color-ink: #0b1220;
+  --color-grey: #5b6b86;
+  --color-line: #e4eaf4;
+  --color-paper: #f7f9fc;
+  --color-green: #12794a;
+  --color-green-soft: #e7f7ee;
+  --color-amber: #8a5a00;
+  --color-amber-soft: #fff6e5;
+  --color-amber-line: #f2dcae;
+  --color-red: #b4232a;
+  --color-white: #ffffff;
 
   --background: var(--paper);
   --foreground: var(--ink);
@@ -32,8 +32,7 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-figtree-sans);
 }
 
 body {
