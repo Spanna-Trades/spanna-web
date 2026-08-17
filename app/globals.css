@@ -2,7 +2,7 @@
 
 @theme {
   --color-blue: #0a4fff;
-  --color-blue-deep: #04143f;
+  --color-deep-blue: #04143f;
   --color-blue-mid: #1a3a8f;
   --color-blue-soft: #eef3ff;
   --color-blue-line: #c9d9ff;
@@ -17,26 +17,27 @@
   --color-amber-line: #f2dcae;
   --color-red: #b4232a;
   --color-white: #ffffff;
-
-  --background: var(--paper);
-  --foreground: var(--ink);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: var(--ink);
-    --foreground: var(--paper);
-  }
+* {
+  box-sizing: border-box;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-figtree-sans);
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-figtree), Arial, Helvetica, sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 800;
 }

@@ -4,8 +4,8 @@ import "./globals.css";
 import Header from "./components/layout/Header";
 import Footer from "./components/layout/Footer";
 
-const FigtreeSans = Figtree({
-  variable: "--font-figtree-sans",
+const figtree = Figtree({
+  variable: "--font-figtree",
   subsets: ["latin"],
 });
 
@@ -18,9 +18,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${FigtreeSans.variable} h-full antialiased`}
+      className={`${figtree.variable} h-full antialiased`}
     >
-      <body className="min-h-full min-w-screen relative">
+      <body className="font-sans min-h-full min-w-screen relative">
         <Header />
         {children}
         <Footer />

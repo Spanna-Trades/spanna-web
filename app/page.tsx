@@ -1,56 +1,53 @@
-"use client";
+import Section from "./elements/layout/Section";
+import Hero from "./components/home/Hero";
+import TradesYouCanTrust from "./components/home/TradesYouCanTrust";
+import HowItWorks from "./components/home/HowItWorks";
+import Benefits from "./components/home/Benefits";
+import ComparisonTable from "./components/home/ComparisonTable";
+import PricingComparison from "./components/home/PricingComparison";
+import InterestForms from "./components/home/InterestForms";
 
-import Grainient from "./components/Grainient";
-import GlassSurface from "./components/GlassSurface";
+const stats = [
+  { value: "3", suffix: "×", label: "Faster than making three\nphone calls for quotes" },
+  { value: "R0", label: "Upfront cost for pros\nto join and start quoting" },
+  { value: "7", label: "Days to flag a problem\nbefore your pro gets paid" },
+];
+
 
 export default function Home() {
   return (
-    <>
-      <div className="absolute top-o left-0 w-screen h-screen z-0">
-        <Grainient
-          color1="#eef3ff"
-          color2="#f7f9fc"
-          color3="#0a4fff"
-          timeSpeed={0.25}
-          colorBalance={0}
-          warpStrength={1}
-          warpFrequency={5}
-          warpSpeed={2}
-          warpAmplitude={50}
-          blendAngle={0}
-          blendSoftness={0.05}
-          rotationAmount={500}
-          noiseScale={2}
-          grainAmount={0.1}
-          grainScale={2}
-          grainAnimated={false}
-          contrast={1.5}
-          gamma={1}
-          saturation={1}
-          centerX={0}
-          centerY={0}
-          zoom={0.9}
-        />
-      </div>
-      <main className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-        <GlassSurface
-          width="90%" 
-          height="80%"
-          borderRadius={50}
-          className="w-full h-fit max-w-3xl"
-        >
-          <div className=" z-1 flex w-full h-fit max-w-3xl flex-col items-center justify-start gap-12 py-16 px-16 sm:items-start">
-            <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-              <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black">
-                Spanna means trades you can trust.
-              </h1>
-              <p className="max-w-md text-lg leading-8 text-zinc-600">
-                Spanna connects homeowners with verified electricians and plumbers. You see the price before work starts. Your money moves only when the job is done. That&apos;s it.
-              </p>
+    <main className="w-full overflow-x-hidden bg-paper text-slate-900">
+      <Hero />
+      <TradesYouCanTrust />
+      <Section background="deep-blue" extendedClasses="px-4 py-12 sm:px-6 lg:px-8">
+        <div className="mx-auto grid max-w-7xl gap-8 text-center md:grid-cols-3">
+          {stats.map((stat) => (
+            <div key={stat.label} className="space-y-1.5">
+              <div className="text-[clamp(32px,5vw,52px)] font-bold tracking-[-1px] text-white">
+                {stat.value}
+                {stat.suffix && <span className="text-[#8fb4ff]">{stat.suffix}</span>}
+              </div>
+              <div className="text-[13px] font-semibold leading-5 text-[#8fb4ff] whitespace-pre-line">
+                {stat.label}
+              </div>
             </div>
-          </div>
-        </GlassSurface>
-      </main>
-    </>
+          ))}
+        </div>
+      </Section>
+      <HowItWorks />
+      <Benefits />
+      <ComparisonTable />
+      <PricingComparison />
+      <InterestForms />
+
+      <div className="demo-bar fixed inset-x-0 bottom-0 z-50 block bg-blue px-5 py-3.5 text-center shadow-[0_-4px_20px_rgba(10,79,255,0.2)] md:hidden">
+        <a href="#how-it-works" className="flex items-center justify-center gap-2 text-[15px] font-bold text-white">
+          Try the interactive demo →
+        </a>
+      </div>
+    </main>
   );
 }
+
+
+
