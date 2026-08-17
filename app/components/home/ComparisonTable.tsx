@@ -3,7 +3,7 @@ import Section from "@/app/elements/layout/Section";
 const ComparisonTable = () => (
   <Section background="grainent">
     <div className="max-w-7xl mx-auto relative">
-      <div className="mx-auto max-w-5xl rounded-2xl bg-deep-blue p-6 text-white sm:p-8 lg:p-10 shadow-xl">
+      <div className="mx-auto max-w-5xl rounded-2xl bg-deep-blue p-6 text-white sm:p-8 lg:p-10 shadow-lg">
         <div className="mb-4 text-[11px] font-extrabold uppercase tracking-[2px] text-[#8fb4ff]">
           How we stack up
         </div>

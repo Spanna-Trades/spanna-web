@@ -1,5 +1,16 @@
+"use client";
+
 import Section from "@/app/elements/layout/Section";
 import SectionHeader from "@/app/elements/layout/SectionHeading";
+import Swiper from 'swiper';
+import { Navigation, Pagination } from 'swiper/modules';
+import { SwiperOptions } from 'swiper/types';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import Image from "next/image";
+import { useEffect, useRef } from "react";
+
 
 const steps = [
   {
@@ -25,32 +36,97 @@ function StepCard({
   title,
   text,
 }: {
-  number: string;
+  number: number;
   title: string;
   text: string;
 }) {
   return (
-    <div className="rounded-xl border border-slate-200 bg-paper p-6 sm:p-7">
-      <span className="mb-4 inline-block rounded-full border border-blue-line bg-blue-soft px-2.5 py-1 text-[11px] font-extrabold tracking-[1.5px] text-blue">
-        {number}
-      </span>
-      <h3 className="mb-2 text-[17px] font-bold tracking-[-0.4px] text-slate-900">{title}</h3>
-      <p className="text-[13.5px] leading-6 text-slate-500">{text}</p>
+    <div className="max-w-88 w-full rounded-xl border border-slate-200 bg-paper p-6 shadow-lg flex flex-col gap-4">
+      <div className="relative w-full aspect-3/4 rounded-lg overflow-hidden">
+        <Image src={`/mockups/mockup-step-${number}.png`} alt={`Step ${number} user journey mockup`} width={300} height={400} />s
+      </div>
+      <div className="flex flex-col gap-2 items-start">
+        <span className="inline-block rounded-full border border-blue-line bg-blue-soft px-2.5 py-1 text-xs font-extrabold tracking-widest text-blue">
+          STEP {number}
+        </span>
+        <h3 className="text-md font-bold text-ink">{title}</h3>
+        <p className="text-sm leading-6 text-grey">{text}</p>
+      </div>
     </div>
   );
 }
 
-const HowItWorks = () => (
-  <Section id="how-it-works" background="white">
-    <div className="max-w-7xl mx-auto">
-      <SectionHeader subheading="How it works" heading="Four steps. Zero stress." description="No WhatsApp chasing. No cash-in-hand ambiguity. No waking up the next day wondering if the job was actually done right." />
-      <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
-        {steps.map((step, index) => (
-          <StepCard key={step.title} number={`STEP ${index + 1}`} title={step.title} text={step.text} />
-        ))}
+const HowItWorks = () => {
+  const prevRef = useRef<HTMLButtonElement | null>(null);
+  const nextRef = useRef<HTMLButtonElement | null>(null);
+
+  useEffect(() => {
+    if (prevRef.current && nextRef.current) {
+      const swiper = new Swiper('.swiper',
+        {
+          modules: [Navigation, Pagination],
+          slidesPerView: 1,
+          spaceBetween: 20,
+          navigation: {
+            nextEl: '.swiper-button-next-custom',
+            prevEl: '.swiper-button-prev-custom',
+            disabledClass: 'text-grey hover:text-grey',
+            hiddenClass: 'hidden',
+          },
+          breakpoints: {
+            // when window width is >= 320px
+            320: {
+              slidesPerView: 1.5
+            },
+            // when window width is >= 480px
+            576: {
+              slidesPerView: 2.5
+            },
+            // when window width is >= 640px
+            840: {
+              slidesPerView: 3.5
+            },
+            1150: {
+              slidesPerView: 4
+            }
+          }
+        } as SwiperOptions
+      );
+
+      return () => {
+        swiper.destroy(true, true);
+      }
+    }
+  }, [])
+
+
+  return (
+    <Section id="how-it-works" background="white">
+      <div className="max-w-7xl mx-auto">
+        <div className="flex flex-col sm:flex-row gap-4 items-end justify-between">
+          <SectionHeader subheading="How it works" heading="Four steps. Zero stress." description="No WhatsApp chasing. No cash-in-hand ambiguity. No waking up the next day wondering if the job was actually done right." />
+
+          <div className="mb-12 hidden sm:flex gap-2 items-center">
+            <button ref={prevRef} className="swiper-button-prev-custom cursor-pointer hover:text-blue">
+              Prev
+            </button>
+            <button ref={nextRef} className="swiper-button-next-custom cursor-pointer transition-colors hover:text-blue">
+              Next
+            </button>
+          </div>
+        </div>
+        <div className="swiper overflow-visible!">
+          <div className="swiper-wrapper pb-5">
+            {steps.map((step, index) => (
+              <div key={`${step.title}-${index}`} className="swiper-slide">
+                <StepCard number={index + 1} title={step.title} text={step.text} />
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
-    </div>
-  </Section>
-)
+    </Section>
+  )
+}
 
 export default HowItWorks;
