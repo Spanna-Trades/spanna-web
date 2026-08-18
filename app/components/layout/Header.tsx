@@ -14,9 +14,9 @@ const Header = () => {
           <a href="#benefits" className="transition-colors text-grey active:text-ink hover:text-blue cursor-pointer">Benefits</a>
           <a href="#pricing" className="transition-colors text-grey active:text-ink hover:text-blue cursor-pointer">Pricing</a>
         </nav>
-        <div className="flex gap-4">
-          <a>Try the demo</a>
-          <a>Stay in the loop</a>
+        <div className="flex gap-4 items-center">
+          <a className="font-semibold transition-colors active:text-ink hover:text-blue" href="https://thatguysaccount.github.io/Spanna/Demo" target="_blank">Try the demo</a>
+          <a className="rounded-full px-3 py-1.5 bg-blue text-white font-semibold transition hover:opacity-90" href="#interest">Get notified</a>
         </div>
       </div>
     </header>

@@ -1,6 +1,5 @@
 import Section from "./elements/layout/Section";
 import Hero from "./components/home/Hero";
-import TradesYouCanTrust from "./components/home/TradesYouCanTrust";
 import HowItWorks from "./components/home/HowItWorks";
 import Benefits from "./components/home/Benefits";
 import ComparisonTable from "./components/home/ComparisonTable";
@@ -18,8 +17,7 @@ export default function Home() {
   return (
     <main className="w-full overflow-x-hidden bg-paper text-slate-900">
       <Hero />
-      <TradesYouCanTrust />
-      <Section background="deep-blue" extendedClasses="px-4 py-12 sm:px-6 lg:px-8">
+      <Section background="deep-blue" extendedClasses="px-4 py-12 sm:px-6 lg:px-8 -mt-8!">
         <div className="mx-auto grid max-w-7xl gap-8 text-center md:grid-cols-3">
           {stats.map((stat) => (
             <div key={stat.label} className="space-y-1.5">
@@ -40,9 +38,9 @@ export default function Home() {
       <PricingComparison />
       <InterestForms />
 
-      <div className="demo-bar fixed inset-x-0 bottom-0 z-50 block bg-blue px-5 py-3.5 text-center shadow-[0_-4px_20px_rgba(10,79,255,0.2)] md:hidden">
-        <a href="#how-it-works" className="flex items-center justify-center gap-2 text-[15px] font-bold text-white">
-          Try the interactive demo →
+      <div className="demo-bar fixed inset-x-0 bottom-0 z-50 block bg-blue px-5 py-3.5 text-center shadow-[0_-4px_20px_rgba(10,79,255,0.2)] rounded-t-2xl md:hidden">
+        <a href="https://thatguysaccount.github.io/Spanna/Demo" target="_blank" className="flex items-center justify-center gap-2 text-[15px] font-bold text-white">
+          Try the interactive demo
         </a>
       </div>
     </main>

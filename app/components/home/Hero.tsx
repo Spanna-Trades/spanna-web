@@ -1,6 +1,7 @@
 import GlassSurface from "@/app/elements/GlassSurface";
 import Grainient from "../../elements/Grainient";
 import Image from "next/image";
+import Button from "@/app/elements/inputs/Button";
 
 const heroMockupImage = "/mockups/hero-mockup.png"
 
@@ -36,8 +37,11 @@ const Hero = () => {
       <div className="max-w-7xl mx-auto relative h-full flex items-center flex-wrap gap-4 lg:gap-8 px-8 sm:px-12 md:px-16 pt-32 pb-24">
         <div className="flex-1">
           <GlassSurface height="fit-content" width="100%" className="p-8">
-            <div className="w-full flex flex-col gap-2">
-              <h1 className="text-4xl sm:text-6xl max-w-full sm:max-w-4/5">
+            <div className="w-full flex items-start flex-col gap-2">
+              <span className="mb-2 rounded-full border border-blue-line bg-blue-soft px-3 py-1.5 text-xs font-extrabold uppercase tracking-widest text-blue">
+                Launching in Gauteng soon
+              </span>
+              <h1 className="text-4xl sm:text-6xl">
                 Making jobs crystal clear for
                 <div className="relative max-h-10 block sm:max-h-15 overflow-hidden mt-2">
                   <div className="flex flex-col animate-loop-text text-blue">
@@ -49,6 +53,12 @@ const Hero = () => {
                 </div>
               </h1>
               <p className="max-w-full sm:max-w-4/5">Spanna connects homeowners with verified electricians and plumbers. You see the price before work starts. Your money moves only when the job is done. That&apos;s it.</p>
+              <div className="flex flex-wrap gap-3">
+                <Button href="#how-it-works">See how it works</Button>
+                <Button href="#interest" variant="secondary">
+                  Get notified
+                </Button>
+              </div>
             </div>
           </GlassSurface>
         </div>
