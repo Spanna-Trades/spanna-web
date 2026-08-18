@@ -43,7 +43,7 @@ function StepCard({
   return (
     <div className="max-w-88 w-full rounded-xl border border-slate-200 bg-paper p-6 shadow-lg flex flex-col gap-4">
       <div className="relative w-full aspect-3/4 rounded-lg overflow-hidden">
-        <Image src={`/mockups/mockup-step-${number}.png`} alt={`Step ${number} user journey mockup`} width={300} height={400} />s
+        <Image src={`/mockups/mockup-step-${number}.png`} alt={`Step ${number} user journey mockup`} width={300} height={400} />
       </div>
       <div className="flex flex-col gap-2 items-start">
         <span className="inline-block rounded-full border border-blue-line bg-blue-soft px-2.5 py-1 text-xs font-extrabold tracking-widest text-blue">
@@ -76,7 +76,7 @@ const HowItWorks = () => {
           breakpoints: {
             // when window width is >= 320px
             320: {
-              slidesPerView: 1.5
+              slidesPerView: 1.2
             },
             // when window width is >= 480px
             576: {

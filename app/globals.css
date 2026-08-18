@@ -41,3 +41,61 @@ h5,
 h6 {
   font-weight: 800;
 }
+
+@keyframes loopTextMobile {
+  0% {
+    transform: translateY(0px);
+  }
+  5% {
+    transform: translateY(-40px);
+  }
+  30% {
+    transform: translateY(-40px);
+  }
+  35% {
+    transform: translateY(-80px);
+  }
+  60% {
+    transform: translateY(-80px);
+  }
+  65% {
+    transform: translateY(-120px);
+  }
+  100% {
+    transform: translateY(-120px);
+  }
+}
+
+@keyframes loopTextDesktop {
+  0% {
+    transform: translateY(0px);
+  }
+  5% {
+    transform: translateY(-60px);
+  }
+  30% {
+    transform: translateY(-60px);
+  }
+  35% {
+    transform: translateY(-120px);
+  }
+  60% {
+    transform: translateY(-120px);
+  }
+  65% {
+    transform: translateY(-180px);
+  }
+  100% {
+    transform: translateY(-180px);
+  }
+}
+
+.animate-loop-text {
+  animation: loopTextMobile 6s forwards infinite;
+}
+
+@media (min-width: 40rem) {
+  .animate-loop-text {
+    animation: loopTextDesktop 6s forwards infinite;
+  }
+}
