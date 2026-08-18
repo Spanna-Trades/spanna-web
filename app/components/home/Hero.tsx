@@ -37,7 +37,7 @@ const Hero = () => {
       <div className="max-w-7xl mx-auto relative h-full flex items-center flex-wrap gap-4 lg:gap-8 px-8 sm:px-12 md:px-16 pt-32 pb-24">
         <div className="flex-1">
           <GlassSurface height="fit-content" width="100%" className="p-8">
-            <div className="w-full flex items-start flex-col gap-2">
+            <div className="w-full flex items-start flex-col gap-4">
               <span className="mb-2 rounded-full border border-blue-line bg-blue-soft px-3 py-1.5 text-xs font-extrabold uppercase tracking-widest text-blue">
                 Launching in Gauteng soon
               </span>
@@ -53,7 +53,7 @@ const Hero = () => {
                 </div>
               </h1>
               <p className="max-w-full sm:max-w-4/5">Spanna connects homeowners with verified electricians and plumbers. You see the price before work starts. Your money moves only when the job is done. That&apos;s it.</p>
-              <div className="flex flex-wrap gap-3">
+              <div className="flex flex-wrap gap-2">
                 <Button href="#how-it-works">See how it works</Button>
                 <Button href="#interest" variant="secondary">
                   Get notified
