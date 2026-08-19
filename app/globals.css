@@ -1,43 +1,101 @@
 @import "tailwindcss";
 
-:root {
-  --blue: #0a4fff;
-  --blue-deep: #04143f;
-  --blue-mid: #1a3a8f;
-  --blue-soft: #eef3ff;
-  --blue-line: #c9d9ff;
-  --ink: #0b1220;
-  --grey: #5b6b86;
-  --line: #e4eaf4;
-  --paper: #f7f9fc;
-  --green: #12794a;
-  --green-soft: #e7f7ee;
-  --amber: #8a5a00;
-  --amber-soft: #fff6e5;
-  --amber-line: #f2dcae;
-  --red: #b4232a;
-  --white: #ffffff;
-
-  --background: var(--paper);
-  --foreground: var(--ink);
+@theme {
+  --color-blue: #0a4fff;
+  --color-deep-blue: #04143f;
+  --color-blue-mid: #1a3a8f;
+  --color-blue-soft: #eef3ff;
+  --color-blue-line: #c9d9ff;
+  --color-ink: #0b1220;
+  --color-grey: #5b6b86;
+  --color-line: #e4eaf4;
+  --color-paper: #f7f9fc;
+  --color-green: #12794a;
+  --color-green-soft: #e7f7ee;
+  --color-amber: #8a5a00;
+  --color-amber-soft: #fff6e5;
+  --color-amber-line: #f2dcae;
+  --color-red: #b4232a;
+  --color-white: #ffffff;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: var(--ink);
-    --foreground: var(--paper);
-  }
+* {
+  box-sizing: border-box;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-figtree), Arial, Helvetica, sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 800;
+}
+
+@keyframes loopTextMobile {
+  0% {
+    transform: translateY(0px);
+  }
+  5% {
+    transform: translateY(-40px);
+  }
+  30% {
+    transform: translateY(-40px);
+  }
+  35% {
+    transform: translateY(-80px);
+  }
+  60% {
+    transform: translateY(-80px);
+  }
+  65% {
+    transform: translateY(-120px);
+  }
+  100% {
+    transform: translateY(-120px);
+  }
+}
+
+@keyframes loopTextDesktop {
+  0% {
+    transform: translateY(0px);
+  }
+  5% {
+    transform: translateY(-60px);
+  }
+  30% {
+    transform: translateY(-60px);
+  }
+  35% {
+    transform: translateY(-120px);
+  }
+  60% {
+    transform: translateY(-120px);
+  }
+  65% {
+    transform: translateY(-180px);
+  }
+  100% {
+    transform: translateY(-180px);
+  }
+}
+
+.animate-loop-text {
+  animation: loopTextMobile 6s forwards infinite;
+}
+
+@media (min-width: 40rem) {
+  .animate-loop-text {
+    animation: loopTextDesktop 6s forwards infinite;
+  }
 }
