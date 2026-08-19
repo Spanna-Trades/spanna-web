@@ -52,7 +52,7 @@ const InterestForm = () => {
 
   const onSubmit: SubmitHandler<InterestFormSchemaType> = async (data) => {
     try {
-      const response = await fetch("https://api.web3forms.com/submit", {
+      const response = await fetch("https://api.web3forms.com/submit/6af7bba7-fc2d-4e72-9aaa-228ba6d1cbb0", {
         method: "POST",
         headers: {
           Accept: "text/html",
