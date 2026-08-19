@@ -29,7 +29,7 @@ const InterestFormSchema = z.discriminatedUnion('interestedAs', [
     ...BasicUserInfoSchema.shape,
     interestedAs: interestedAsOptions.extract(["Tradesperson"], { message: "Please select an option" }),
     trade: z.enum(["Electrician", "Plumber", "Both"], { message: "Please select an option" }),
-    yearsInTrade: z.coerce.number({ message: "Please enter number of years in trade" }).gt(0),
+    yearsInTrade: z.number({ message: "Please enter number of years in trade" }).gt(0),
   }),
 ])
 
@@ -47,6 +47,8 @@ const InterestForm = () => {
     resolver: zodResolver(InterestFormSchema),
   })
   const interestedAs = watch("interestedAs");
+  const tradeError = "trade" in errors ? errors.trade?.message : undefined;
+  const yearsInTradeError = "yearsInTrade" in errors ? errors.yearsInTrade?.message : undefined;
 
   const onSubmit: SubmitHandler<InterestFormSchemaType> = async (data) => {
     try {
@@ -103,8 +105,8 @@ const InterestForm = () => {
             {interestedAs === "Tradesperson" && (
               <>
                 <div className="flex flex-col sm:flex-row gap-4">
-                  <Select id="trade" label="Trade" defaultOptionLabel="Select your trade" options={["Electrician", "Plumber", "Both"]} wrapperClasses="flex-1" {...register("trade")} errorMessage={errors.trade?.message} />
-                  <Field id="yearsInTrade" type="number" label="Years in your trade" placeholder="e.g. 3 years" wrapperClasses="flex-1"  {...register("yearsInTrade")} errorMessage={errors.yearsInTrade?.message} />
+                  <Select id="trade" label="Trade" defaultOptionLabel="Select your trade" options={["Electrician", "Plumber", "Both"]} wrapperClasses="flex-1" {...register("trade")} errorMessage={tradeError} />
+                  <Field id="yearsInTrade" type="number" label="Years in your trade" placeholder="e.g. 3 years" wrapperClasses="flex-1" {...register("yearsInTrade", { valueAsNumber: true })} errorMessage={yearsInTradeError} />
                 </div>
                 {/* <div className="mb-5 flex gap-3 rounded-2xl bg-[linear-gradient(135deg,#04143f_0%,#1a3a8f_100%)] p-4 text-white">
                   <div className="text-2xl">🎁</div>

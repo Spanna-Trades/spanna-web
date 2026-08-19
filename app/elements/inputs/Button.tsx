@@ -1,6 +1,6 @@
 type ButtonProps = {
   children: React.ReactNode;
-  type: "button" | "submit" | "link",
+  type?: "button" | "submit" | "link",
   href?: string;
   variant?: "primary" | "secondary";
   extendedClasses?: string
