@@ -38,7 +38,7 @@ const Header = () => {
 
           <div className="hidden items-center gap-4 md:flex">
             <a
-              className="font-semibold text-grey transition-colors hover:text-blue active:text-ink"
+              className="font-semibold text-ink transition-colors hover:text-blue active:text-ink"
               href="https://thatguysaccount.github.io/Spanna/Demo"
               target="_blank"
               rel="noreferrer"

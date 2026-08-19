@@ -4,7 +4,7 @@ import HowItWorks from "./components/home/HowItWorks";
 import Benefits from "./components/home/Benefits";
 import ComparisonTable from "./components/home/ComparisonTable";
 import PricingComparison from "./components/home/PricingComparison";
-import InterestForms from "./components/home/InterestForms";
+import InterestForm from "./components/home/InterestForm";
 
 const stats = [
   { value: "3", suffix: "×", label: "Faster than making three\nphone calls for quotes" },
@@ -36,7 +36,7 @@ export default function Home() {
       <Benefits />
       <ComparisonTable />
       <PricingComparison />
-      <InterestForms />
+      <InterestForm />
 
       <div className="demo-bar fixed inset-x-0 bottom-0 z-50 block bg-blue px-5 py-3.5 text-center shadow-[0_-4px_20px_rgba(10,79,255,0.2)] rounded-t-2xl md:hidden">
         <a href="https://thatguysaccount.github.io/Spanna/Demo" target="_blank" className="flex items-center justify-center gap-2 text-[15px] font-bold text-white">

@@ -1,20 +1,26 @@
+interface FieldProps extends React.HTMLProps<HTMLInputElement> {
+  wrapperClasses?: string
+  errorMessage?: string
+}
+
 const Field = ({
   label,
   type = "text",
   placeholder,
-}: {
-  label: string;
-  type?: string;
-  placeholder: string;
-}) => (
-  <label className="block">
-    <span className="mb-2 block text-[12px] font-bold uppercase tracking-[0.3px] text-slate-500">{label}</span>
+  wrapperClasses,
+  errorMessage,
+  ...props
+}: FieldProps) => (
+  <div className={wrapperClasses}>
+    <label htmlFor={props.id} className="ml-3.5 mb-1 text-xs font-bold uppercase text-grey">{label}</label>
     <input
       type={type}
       placeholder={placeholder}
-      className="w-full rounded-[10px] border border-slate-200 bg-white px-3.5 py-2.5 text-[14px] text-slate-900 outline-none transition focus:border-blue"
+      className="leading-6 w-full rounded-md border border-slate-200 bg-white px-3.5 py-2.5 text-md text-ink outline-none transition focus:border-blue"
+      {...props}
     />
-  </label>
+    {errorMessage && <p className="inline text-red-400 text-xs">{errorMessage}</p>}
+  </div>
 );
 
 export default Field;
