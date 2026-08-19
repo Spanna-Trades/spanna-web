@@ -16,7 +16,7 @@ const Field = ({
     <input
       type={type}
       placeholder={placeholder}
-      className="leading-6 w-full rounded-md border border-slate-200 bg-white px-3.5 py-2.5 text-md text-ink outline-none transition focus:border-blue"
+      className={`leading-6 w-full rounded-md border border-slate-200 bg-white px-3.5 py-2.5 text-md text-ink outline-none transition focus:border-blue ${errorMessage && 'border-red-400 focus:border-red-400'}`}
       {...props}
     />
     {errorMessage && <p className="inline text-red-400 text-xs">{errorMessage}</p>}
