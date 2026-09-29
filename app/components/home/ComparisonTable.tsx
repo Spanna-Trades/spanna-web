@@ -1,5 +1,15 @@
 import Section from "@/app/elements/layout/Section";
 
+const ComparisonTableData = [
+  ["Upfront cost to join", "Free", "Free", "Free"],
+  ["Cost per lead or commission", "R30 per lead", "Up to 20% of labour", "2.5% on completion only"],
+  ["Payment guaranteed before you start", "✕", "✕", "✓"],
+  ["Final price locked before work begins", "✕", "✕", "✓"],
+  ["Cover fund for disputes and damage", "✕", "✕", "✓"],
+  ["Auto invoicing and job records", "✕", "✕", "✓"],
+  ["Verified public reputation score", "✕", "✓", "✓"],
+]
+
 const ComparisonTable = () => (
   <Section background="grainent">
     <div className="max-w-7xl mx-auto relative">
@@ -33,15 +43,7 @@ const ComparisonTable = () => (
               </tr>
             </thead>
             <tbody>
-              {[
-                ["Upfront cost to join", "Free", "Free", "Free"],
-                ["Cost per lead or commission", "R30 per lead", "Up to 20% of labour", "2.5% on completion only"],
-                ["Payment guaranteed before you start", "✕", "✕", "✓"],
-                ["Final price locked before work begins", "✕", "✕", "✓"],
-                ["Cover fund for disputes and damage", "✕", "✕", "✓"],
-                ["Auto invoicing and job records", "✕", "✕", "✓"],
-                ["Verified public reputation score", "✕", "✓", "✓"],
-              ].map(([feature, a, b, s]) => (
+              {ComparisonTableData.map(([feature, a, b, s]) => (
                 <tr key={feature} className="border-t border-white/10 hover:bg-white/5">
                   <td className="border-t border-white/10 px-0 py-4 pr-4 text-[14px] text-white/80">{feature}</td>
                   <td className="border-t border-white/10 px-4 py-4 text-center text-[14px] text-white/80">

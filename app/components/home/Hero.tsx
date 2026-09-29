@@ -1,11 +1,52 @@
+"use client"
+
+import { hover } from "motion"
+import { motion } from "motion/react"
+
 import GlassSurface from "@/app/elements/GlassSurface";
 import Grainient from "../../elements/Grainient";
 import Image from "next/image";
 import Button from "@/app/elements/inputs/Button";
+import { useEffect, useRef, useState } from "react";
 
 const heroMockupImage = "/mockups/hero-mockup.png"
 
 const Hero = () => {
+
+  const heroImageRef = useRef<HTMLAnchorElement>(null)
+  const [showCursorFollower, setShowCursorFollower] = useState(0)
+  const [mousePosition, setMousePosition] = useState({
+    x: 0,
+    y: 0,
+  });
+
+  const variants = {
+    default: {
+      x: mousePosition.x + 10,
+      y: mousePosition.y + 10,
+      opacity: showCursorFollower
+    },
+  };
+
+  useEffect(() => {
+    return hover(heroImageRef.current, () => {
+      const updateMousePosition = (e: MouseEvent) => {
+        setMousePosition({
+          x: e.clientX,
+          y: e.clientY,
+        });
+      };
+
+      setShowCursorFollower(100)
+      window.addEventListener("mousemove", updateMousePosition);
+
+      return () => {
+        setShowCursorFollower(0)
+        window.removeEventListener("mousemove", updateMousePosition)
+      };
+    })
+  }, []);
+
   return (
     <section className="relative h-full lg:h-screen w-full">
       <div className="absolute inset-0 w-full h-full z-0">
@@ -63,7 +104,50 @@ const Hero = () => {
           </GlassSurface>
         </div>
         <div className="-mb-32 md:mb-0 flex-1 h-full w-auto min-w-full lg:min-w-100">
-          <Image src={heroMockupImage} alt="App mockup" loading="eager" priority height={400} width={400} sizes="(max-width: 768px) 100vw, 50vw" className="aspect-square w-full h-auto" />
+          <a
+            ref={heroImageRef}
+            className="group cursor-pointer"
+            href="https://thatguysaccount.github.io/Spanna/Demo"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <Image
+              src={heroMockupImage}
+              alt="App mockup"
+              loading="eager"
+              priority
+              height={400}
+              width={400}
+              sizes="(max-width: 768px) 100vw, 50vw"
+              className="aspect-square w-full h-auto transition-transform duration-300 group-hover:-translate-y-1"
+            />
+          </a>
+          <motion.div
+            variants={variants}
+            animate="default"
+            transition={{
+              x: {
+                duration: 0.1,
+                ease: "linear",
+                repeat: 0,
+                type: "spring",
+                stiffness: 50,
+              },
+              y: {
+                duration: 0.1,
+                ease: "linear",
+                repeat: 0,
+                type: "spring",
+                stiffness: 50,
+              },
+              opacity: {
+                duration: 0.3,
+                ease: "linear",
+              }
+            }}
+            className="fixed top-0 left-0 bg-white rounded-full px-4 py-2 text-xs shadow-lg">
+            <p>Try the Demo</p>
+          </motion.div>
         </div>
       </div>
     </section>

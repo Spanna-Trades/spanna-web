@@ -1,5 +1,7 @@
 "use client";
 
+import { motion } from "motion/react"
+
 import Section from "@/app/elements/layout/Section";
 import SectionHeader from "@/app/elements/layout/SectionHeading";
 import Swiper from 'swiper';
@@ -43,7 +45,13 @@ function StepCard({
   return (
     <div className="max-w-88 w-full rounded-xl border border-slate-200 bg-paper p-6 shadow-lg flex flex-col gap-4">
       <div className="relative w-full aspect-3/4 rounded-lg overflow-hidden">
-        <Image src={`/mockups/mockup-step-${number}.png`} alt={`Step ${number} user journey mockup`} width={300} height={400} />
+        <Image
+          src={`/mockups/mockup-step-${number}.png`}
+          alt={`Step ${number} user journey mockup`}
+          width={300}
+          height={400}
+          sizes="(max-width: 576px) 90vw, (max-width: 768px) 40vw, 25vw"
+        />
       </div>
       <div className="flex flex-col gap-2 items-start">
         <span className="inline-block rounded-full border border-blue-line bg-blue-soft px-2.5 py-1 text-xs font-extrabold tracking-widest text-blue">
@@ -118,9 +126,16 @@ const HowItWorks = () => {
         <div className="swiper overflow-visible!">
           <div className="swiper-wrapper pb-5">
             {steps.map((step, index) => (
-              <div key={`${step.title}-${index}`} className="swiper-slide">
+              <motion.div
+                key={`${step.title}-${index}`}
+                className="swiper-slide"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.1 * (index + 1) }}
+                viewport={{ amount: 0.4, once: true }}
+              >
                 <StepCard number={index + 1} title={step.title} text={step.text} />
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>

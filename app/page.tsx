@@ -1,37 +1,16 @@
-import Section from "./elements/layout/Section";
 import Hero from "./components/home/Hero";
 import HowItWorks from "./components/home/HowItWorks";
 import Benefits from "./components/home/Benefits";
 import ComparisonTable from "./components/home/ComparisonTable";
 import PricingComparison from "./components/home/PricingComparison";
 import InterestForm from "./components/home/InterestForm";
-
-const stats = [
-  { value: "3", suffix: "×", label: "Faster than making three\nphone calls for quotes" },
-  { value: "R0", label: "Upfront cost for pros\nto join and start quoting" },
-  { value: "7", label: "Days to flag a problem\nbefore your pro gets paid" },
-];
-
+import CalloutCards from "./components/home/CalloutCards";
 
 export default function Home() {
   return (
     <main className="w-full overflow-x-hidden bg-paper text-slate-900">
       <Hero />
-      <Section background="deep-blue" extendedClasses="px-4 py-12 sm:px-6 lg:px-8 -mt-8!">
-        <div className="mx-auto grid max-w-7xl gap-8 text-center md:grid-cols-3">
-          {stats.map((stat) => (
-            <div key={stat.label} className="space-y-1.5">
-              <div className="text-[clamp(32px,5vw,52px)] font-bold tracking-[-1px] text-white">
-                {stat.value}
-                {stat.suffix && <span className="text-[#8fb4ff]">{stat.suffix}</span>}
-              </div>
-              <div className="text-[13px] font-semibold leading-5 text-[#8fb4ff] whitespace-pre-line">
-                {stat.label}
-              </div>
-            </div>
-          ))}
-        </div>
-      </Section>
+      <CalloutCards />
       <HowItWorks />
       <Benefits />
       <ComparisonTable />
